@@ -103,12 +103,6 @@ public class ConsolInterface {
         return in.nextLine();
     }
 
-    public void notFound(){
-        System.out.println("could not find task\n");
-    }
-    public void success(){
-        System.out.println("success request\n");
-    }
 
     public Date getDate(String date){
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy-MM-dd, kk:mm");
