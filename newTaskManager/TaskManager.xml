@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<TaskManager>
+    <Tasks>
+        <Task id = "1">
+            <Title>Birthday</Title>
+            <Description>Dhirendra Brahmachari</Description>
+            <Date>1966</Date>
+            <Contact>8-938-132-45-67</Contact>
+        </Task>
+        <Task id="2">
+            <Title>Meeting of shareholders</Title>
+            <Description>J. Krishnamurti</Description>
+            <Date>1954</Date>
+            <Contact>8-926-132-45-88</Contact>
+        </Task>
+        <Task id = "3">
+            <Title>Interview</Title>
+            <Description>D. Kkatimulin</Description>
+            <Date>1984</Date>
+            <Contact>8-909-330-31-67</Contact>
+        </Task>
+    </Tasks>
+</TaskManager>

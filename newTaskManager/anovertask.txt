@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<register>
+    <taskList>
+        <task id="22">
+            <title>sdfsd</title>
+            <description>sdfsdf</description>
+            <date>2018-11-30T15:54:24.686+04:00</date>
+            <contact>sdfsdf</contact>
+        </task>
+        <task id="1">
+            <title>dfgdfg</title>
+            <description>dfdfgd</description>
+            <date>2018-11-30T20:12:00+04:00</date>
+            <contact>dfgdfgd</contact>
+        </task>
+        <task id="2">
+            <title>abacaba</title>
+            <description>dfgdfgd</description>
+            <date>2020-11-23T00:00:00+04:00</date>
+            <contact>dfgdfg</contact>
+        </task>
+        <task id="3">
+            <title>трятря</title>
+            <description>dfgdfg</description>
+            <date>2018-11-30T22:40:00+04:00</date>
+            <contact>dfgdfg</contact>
+        </task>
+    </taskList>
+</register>
