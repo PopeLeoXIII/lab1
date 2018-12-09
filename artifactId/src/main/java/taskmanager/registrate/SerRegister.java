@@ -38,11 +38,11 @@ public class SerRegister implements Register{
     }
 
     @Override
-    public void saveTasks(Tasks tasks) {
+    public void saveTasks() {
         try {
             FileOutputStream fos = new FileOutputStream(fileName);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(tasks);
+            oos.writeObject(new Tasks().setList(taskList));
             oos.flush();
             oos.close();
         } catch (FileNotFoundException e) {
@@ -59,16 +59,12 @@ public class SerRegister implements Register{
     public void addTask(Task task) {
         taskList.add(task);
         log.info("в список задач добавлена " + task.getId());
-        Tasks tasks = new Tasks().setList(taskList);
-        saveTasks(tasks);
     }
 
     @Override
     public void removeTask(String id) {
         taskList.removeIf((Task t) -> t.getId().equals(id));
         log.info("из списка задач удалена " + id);
-        Tasks tasks = new Tasks().setList(taskList);
-        saveTasks(tasks);
     }
 
     private Comparator<Task> taskToDateComp = (Task a, Task b) -> {

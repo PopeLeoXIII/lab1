@@ -16,6 +16,7 @@ public class Tasks implements Serializable
         super();
     }
 
+
     public Tasks setList(ArrayList<Task> arrayList){
         taskList = arrayList;
         return this;

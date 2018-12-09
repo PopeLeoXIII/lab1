@@ -1,10 +1,9 @@
 package taskmanager.handler;
 
 import org.apache.log4j.Logger;
-import taskmanager.Interface.ConsolInterface;
+import taskmanager.Interface.ConsoleInterface;
 import taskmanager.Notificate.NoticeThread;
 import taskmanager.elements.Task;
-import taskmanager.elements.Tasks;
 import taskmanager.registrate.Register;
 import taskmanager.registrate.XmlRegister;
 
@@ -15,19 +14,17 @@ public class Handler {
     private NoticeThread noticeThread;
     private Register register;
     private Task taskNotice;
-    private ConsolInterface interfacee;
     private static final Logger log = Logger.getLogger(XmlRegister.class);
 
-    public Handler(Register r, ConsolInterface interfacee) {
+    public Handler(Register r) {
         log.info("Создан handler");
         register = r;
-        this.interfacee = interfacee;
         setNotice(register.getFirstDateTask());
     }
 
     private void setNotice(Task task){
         taskNotice = task;
-        noticeThread = new NoticeThread(register, taskNotice, interfacee);
+        noticeThread = new NoticeThread(register, taskNotice);
         noticeThread.setDaemon(true);
 
         if (taskNotice != null) {
@@ -41,11 +38,11 @@ public class Handler {
     }
 
     public boolean request(){
-        int req = interfacee.request();
+        int req = ConsoleInterface.request();
         log.info("Запрос с кодом " + req);
         switch (req) {
             case 1:
-                Task task = interfacee.newTask();
+                Task task = ConsoleInterface.newTask();
                 log.info("Получена задача " + task.getId() + " " + task.getTitle());
 
                 Date newDate = task.getDate();
@@ -58,13 +55,11 @@ public class Handler {
                 register.addTask(task);
                 break;
             case 2:
-                Tasks tasks = register.getTasks();
-
-                interfacee.showAll(tasks.getTaskList());
+                ConsoleInterface.showAll(register.getTaskList());//tasks.getTaskList());
 
                 break;
             case 3:
-                String id = interfacee.getId();
+                String id = ConsoleInterface.getId();
                 log.info("Запрос на удаление задачи " + id);
 
                 register.removeTask(id);
@@ -79,6 +74,7 @@ public class Handler {
                 log.error("Неверный формат ввода ");
                 break;
             case 0:
+                register.saveTasks();
                 log.error("Завершение работы приложения");
                 return false;
         }

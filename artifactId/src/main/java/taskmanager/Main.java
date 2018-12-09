@@ -1,20 +1,14 @@
 package taskmanager;
 
-import taskmanager.Interface.ConsolInterface;
+import taskmanager.Interface.ConsoleInterface;
 import taskmanager.handler.Handler;
-import taskmanager.registrate.Register;
-import taskmanager.registrate.SerRegister;
-import taskmanager.registrate.SimpleXmlRegister;
-
-
+import taskmanager.registrate.*;
 
 public class Main {
     public static void main(String[] args){
-        ConsolInterface inter = new ConsolInterface();
-        int typeOfRegister = inter.typeOfRegister();
 
         Register register;
-        switch (typeOfRegister){
+        switch (ConsoleInterface.typeOfRegister()){
             case 1:
                 register = new SerRegister("src\\main\\resources\\TaskManager.out");
                 break;
@@ -25,11 +19,10 @@ public class Main {
                 return;
 
         }
-        Handler handler = new Handler(register, inter);
+        Handler handler = new Handler(register);
         while (handler.request()){
 
         }
-
 
     }
 }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 
-public class XmlRegister implements Register{
+public class XmlRegister{
         final private File file;
         private static final Logger log = Logger.getLogger(XmlRegister.class);
 

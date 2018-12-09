@@ -1,7 +1,8 @@
 package taskmanager.Notificate;
 
 import org.apache.log4j.Logger;
-import taskmanager.Interface.ConsolInterface;
+import taskmanager.Interface.ConsoleInterface;
+import taskmanager.Interface.TryNotificate;
 import taskmanager.elements.Task;
 import taskmanager.registrate.Register;
 import taskmanager.registrate.XmlRegister;
@@ -12,13 +13,13 @@ public class NoticeThread extends Thread{
     private Date date;
     private Task task;
     private Register register;
-    private ConsolInterface interfacee;
+    private TryNotificate tryN;
     private static final Logger log = Logger.getLogger(XmlRegister.class);
 
-    public NoticeThread (Register register, Task task, ConsolInterface interfacee){
+    public NoticeThread (Register register, Task task){
         super();
-        this.interfacee = interfacee;
         this.register = register;
+        tryN = new TryNotificate();
         setTask(task);
         log.info("создан NoticeThread");
     }
@@ -41,7 +42,7 @@ public class NoticeThread extends Thread{
                 log.info("уведомление завершено нештатно");
 
             while (result) {
-                //setTask(register.getTasks().getFirstDateTask());
+                setTask(register.getFirstDateTask());
                 result = m();
             }
         } else {
@@ -58,7 +59,8 @@ public class NoticeThread extends Thread{
             if (date.after(now)) {
                 long dif = date.getTime() - now.getTime();
                 Thread.sleep(dif);
-                interfacee.noticeMessege(task);
+                ConsoleInterface.show(task);
+                tryN.show(task);
                 return true;
             } else {
                 //System.out.println("can't notice in past");

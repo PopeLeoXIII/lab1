@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public interface Register {
     public Tasks getTasks();
-    public void saveTasks(Tasks tasks);
+    public void saveTasks();
     public void addTask(Task task);
     public void removeTask(String id);
     public Task getFirstDateTask();
